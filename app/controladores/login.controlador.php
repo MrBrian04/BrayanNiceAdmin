@@ -1,5 +1,7 @@
 <?php
 
+require_once "app/modelos/login.model.php";
+
 class ControladorLogin{
 
     static public function ctrIngresoUsuario(){
@@ -9,7 +11,16 @@ class ControladorLogin{
             $email = "user_email";
             $value = $_POST["email"];
 
-            $response = LoginModel::mdlInsertUser($table,  $email, $value);
+            $response = LoginModel::mdlVerifyUser($table,  $email, $value);
+
+            if($response && $_POST["password"]== $response["user_password"]){
+                session_start();
+                $_SESSION["authenticated"] = "ok";
+                $_SESSION["user_name"] = $response["user_name"];
+                header("Location:index.php");
+            }else{
+                echo '<div class="alert-danger text-center">Credenciales incorrectas</div>';
+            }
 
         }
 

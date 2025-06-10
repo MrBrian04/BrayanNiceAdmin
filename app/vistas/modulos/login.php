@@ -1,4 +1,11 @@
-  <main>
+<?php
+  if (!isset($_SESSION)) session_start();
+  if (isset($_SESSION["authenticated"]) && $_SESSION["authenticated"] == "ok" ) return;
+  require_once "app/controladores/login.controlador.php";
+?>
+
+
+<main>
     <div class="container">
 
       <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
