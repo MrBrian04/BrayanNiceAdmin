@@ -20,7 +20,7 @@
   <!-- Vendor CSS Files -->
   <link href="app/vistas/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="app/vistas/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-
+ 
   <!-- Template Main CSS File -->
   <link href="app/vistas/assets/css/style.css" rel="stylesheet">
 
@@ -35,24 +35,24 @@
 
 <body>
 
-
-<!-- ======= Header ======= -->
-   <?php   include "app/vistas/modulos/header.php";      ?>
+  <?php include "app/vistas/modulos/login.php"; ?>
+  <!-- ======= Header ======= -->
+  <?php include "app/vistas/modulos/header.php"; ?>
   <!-- End Header -->
 
-  <?php   include "app/vistas/modulos/login.php";      ?>
-
   <!-- ======= Sidebar ======= -->
-  <?php   include "app/vistas/modulos/sidebar.php";      ?>
+ <?php include "app/vistas/modulos/sidebar.php"; ?>
   <!-- End Sidebar-->
 
-
+  <!-- main -->
+ <?php include "app/vistas/modulos/main.php"; ?>
   <!-- End #main -->
-  <?php   include "app/vistas/modulos/main.php";      ?>
-  
+
   <!-- ======= Footer ======= -->
-<?php   include "app/vistas/modulos/footer.php";      ?>
+ <?php include "app/vistas/modulos/footer.php"; ?>
   <!-- End Footer -->
+
+
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
@@ -60,9 +60,8 @@
 
   <script src="app/vistas/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-
   <!-- Template Main JS File -->
-  <script src="app/vistas/assets/js/main.js"></script>
+  <script src="app/vistas/assets/js/main.js"></script> 
 
 </body>
 

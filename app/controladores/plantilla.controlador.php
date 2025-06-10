@@ -2,10 +2,10 @@
 
 class ControladorPlantilla{
 
-        public function ctrPlantilla (){
+    public function ctrPlantilla(){
 
         include "app/vistas/plantilla.php";
 
-        }
+    }
 
 }
