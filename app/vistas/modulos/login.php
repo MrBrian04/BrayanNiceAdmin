@@ -1,11 +1,10 @@
-<?php
-  if (!isset($_SESSION)) session_start();
-  if (isset($_SESSION["authenticated"]) && $_SESSION["authenticated"] == "ok" ) return;
-  require_once "app/controladores/login.controlador.php";
-?>
-
-
-<main>
+  <?php
+   if(!isset($_SESSION)) session_start();
+   if(isset($_SESSION["authenticated"]) && $_SESSION["authenticated"] === "ok") return;
+   require_once "app/controladores/login.controller.php";
+  ?>
+  
+  <main>
     <div class="container">
 
       <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
@@ -28,7 +27,7 @@
                     <h5 class="card-title text-center pb-0 fs-4">Inicia con tu cuenta</h5>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate>
+                  <form class="row g-3 needs-validation" method="post" novalidate>
 
                     <div class="col-12">
                       <label for="yourUsername" class="form-label">Correo</label>
@@ -46,7 +45,7 @@
                     </div>
 
                     <div class="col-12">
-                      <?php ControladorLogin::ctrIngresoUsuario(); ?>  
+                      <?php LoginController::ctrVerifyUser(); ?>  
                       <button class="btn btn-primary w-100" type="submit">Entrar</button>
                     </div>
                   </form>

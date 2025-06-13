@@ -9,13 +9,12 @@
         </a>
       </li><!-- End Dashboard Nav -->
 
-            <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link " href="app/vistas/modulos/exit.php">
           <i class="bi bi-grid"></i>
-          <span>Cerrar sesion</span>
+          <span>Cerrar sesión</span>
         </a>
-      </li><!-- End Dashboard Nav -->
-
+      </li><!-- End cerrar sesión -->
 
     </ul>
 
