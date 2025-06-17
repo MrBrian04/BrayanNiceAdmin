@@ -4,7 +4,7 @@ require_once "app/modelos/login.model.php";
 
 class LoginController{
 
-    static public function ctrVerifyUser(){
+    public static  function ctrVerifyUser(){
     
         if(isset($_POST["email"])){
             $table = "users";
