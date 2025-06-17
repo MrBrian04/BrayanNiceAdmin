@@ -20,9 +20,9 @@ class UserController{
             $response = UserModel::mdlUserSave($data);
 
             if ($response === "ok") {
-                echo "<div class='alert alert-success'>Usuario registrado correctamente</div>";
+                echo "<div class='alert alert-success'>Rol registrado correctamente</div>";
             } else {
-                echo "<div class='alert alert-danger'>Error al registrar usuario</div>";
+                echo "<div class='alert alert-danger'>Error al registrar Rol</div>";
             }
 
 

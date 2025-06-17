@@ -10,6 +10,9 @@ require_once "app/modelos/login.model.php";
 require_once "app/controladores/users.controller.php";
 require_once "app/modelos/users.model.php";
 require_once "app/modelos/conexion.php";
+require_once "app/controladores/role.controller.php";
+require_once "app/modelos/role.model.php";
+
 
 //iniciar sesion
 if(
@@ -37,5 +40,17 @@ if(
 
 }
 
+//registrar rol
+if(
+    $_SERVER["REQUEST_METHOD"]=="POST" &&
+    isset($_GET["route"], $_GET["action"]) &&
+    $_GET["route"] === "role" &&
+    $_GET["action"] === "save"
+    ){
+        $roleController = new RoleController();
+        $roleController->ctrRoleSave();
+        exit;
+
+}
 $plantilla = new ControladorPlantilla();
 $plantilla->ctrPlantilla();
