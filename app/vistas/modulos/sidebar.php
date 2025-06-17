@@ -3,9 +3,16 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="index.html">
+        <a class="nav-link " href="home">
           <i class="bi bi-grid"></i>
-          <span>Dashboard</span>
+          <span>Inicio</span>
+        </a>
+      </li><!-- End Inicio Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link " href="users">
+          <i class="bi bi-grid"></i>
+          <span>Agregar Usuario</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
