@@ -11,4 +11,10 @@ class RoleModel{
         return $stmt->execute() ? "ok" : "error";
     }
 
+    public static function mdlGetAllRole(){
+        $stmt = Conexion::conectar()->prepare("SELECT * FROM roles");
+        $stmt-> execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 }

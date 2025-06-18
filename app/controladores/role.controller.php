@@ -21,4 +21,8 @@ class RoleController{
             echo "<div class='alert alert-danger'>Error al registrar usuario</div>";
         }
     }
+
+    public static function ctrGetAllRoles(){
+        return RoleModel::mdlGetAllRole();
+    }
 }

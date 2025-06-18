@@ -31,4 +31,7 @@ class UserController{
 
 
     }
+    public static function ctrGetAllUsers(){
+        return UserModel::mdlGetAllUsers();
+    }
 }
