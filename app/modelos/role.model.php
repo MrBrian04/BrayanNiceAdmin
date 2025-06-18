@@ -17,4 +17,15 @@ class RoleModel{
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public static function mdlAssignRoleToUser($userId, $roleId) {
+            $stmt = Conexion::conectar()->prepare("INSERT INTO user_role (fk_id_user, fk_id_role) VALUES (:user, :role)");
+            $stmt->bindParam(":user", $userId, PDO::PARAM_INT);
+            $stmt->bindParam(":role", $roleId, PDO::PARAM_INT);
+            if ($stmt->execute()) {
+                return "ok";
+            } else {
+                return "error";
+            }
+        }
+
 }

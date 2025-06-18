@@ -11,7 +11,7 @@
         <div class="card-body">
           <h5 class="card-title">Asignar Rol a un Usuario</h5>
 
-          <form method="POST" action="index.php?route=role&action=assign">
+          <form method="POST" action="index.php?route=roleUser&action=assign">
             <div class="row mb-3">
               <label for="inputRole" class="col-sm-2 col-form-label">Rol</label>
               <div class="col-sm-10">
