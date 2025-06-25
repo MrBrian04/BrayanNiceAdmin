@@ -14,4 +14,20 @@ class LoginModel{
         return $stmt->fetch(PDO::FETCH_ASSOC);
 
     }
+<<<<<<< HEAD
+
+    static public function mdlVerifyRole($userId){
+
+        $sql = "SELECT fk_id_role FROM user_role WHERE fk_id_user = :userid";
+
+        $stmt = Conexion::conectar()->prepare($sql);
+
+        $stmt->bindParam(":userid", $userId, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+
+    }
+
+=======
+>>>>>>> f580668ffe5ac07f48f5dd66b35311be415f1902
 }
