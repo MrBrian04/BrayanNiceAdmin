@@ -14,7 +14,6 @@ class LoginModel{
         return $stmt->fetch(PDO::FETCH_ASSOC);
 
     }
-<<<<<<< HEAD
 
     static public function mdlVerifyRole($userId){
 
@@ -28,6 +27,4 @@ class LoginModel{
 
     }
 
-=======
->>>>>>> f580668ffe5ac07f48f5dd66b35311be415f1902
 }

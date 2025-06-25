@@ -23,7 +23,6 @@
             <i class="bi bi-search"></i>
           </a>
         </li><!-- End Search Icon-->
-<<<<<<< HEAD
                 <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
@@ -48,8 +47,6 @@
 
           </ul><!-- End Profile Dropdown Items -->
         </li><!-- End Profile Nav -->
-=======
->>>>>>> f580668ffe5ac07f48f5dd66b35311be415f1902
 
       </ul>
     </nav><!-- End Icons Navigation -->
