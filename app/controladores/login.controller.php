@@ -8,10 +8,13 @@ class LoginController{
     
         if(isset($_POST["email"])){
             $value = $_POST["email"];
+            $password = $_POST["password"];
 
             $response = LoginModel::mdlVerifyUser($value);
 
-            if($response && $_POST["password"] === $response["user_password"]){
+            if(password_verify($password, $response["user_password"])){
+
+            //if($response && $_POST["password"] === $response["user_password"]){
 
                 $idUser = $response["pk_id_user"];
 
