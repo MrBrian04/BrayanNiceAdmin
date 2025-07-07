@@ -16,7 +16,7 @@ require_once "app/modelos/role.model.php";
 
 //iniciar sesion
 if(
-    $_SERVER["REQUEST_METHOD"]=="POST" &&
+    $_SERVER["REQUEST_METHOD"]==="POST" &&
     isset($_GET["route"], $_GET["action"]) &&
     $_GET["route"] === "login" &&
     $_GET["action"] === "verify"
@@ -29,7 +29,7 @@ if(
 
 //registrar usuarios
 if(
-    $_SERVER["REQUEST_METHOD"]=="POST" &&
+    $_SERVER["REQUEST_METHOD"]==="POST" &&
     isset($_GET["route"], $_GET["action"]) &&
     $_GET["route"] === "users" &&
     $_GET["action"] === "save"
@@ -42,7 +42,7 @@ if(
 
 //registrar rol
 if(
-    $_SERVER["REQUEST_METHOD"]=="POST" &&
+    $_SERVER["REQUEST_METHOD"]==="POST" &&
     isset($_GET["route"], $_GET["action"]) &&
     $_GET["route"] === "role" &&
     $_GET["action"] === "save"
@@ -55,7 +55,7 @@ if(
 
 //registrar rol al usuario
 if(
-    $_SERVER["REQUEST_METHOD"]=="POST" &&
+    $_SERVER["REQUEST_METHOD"]==="POST" &&
     isset($_GET["route"], $_GET["action"]) &&
     $_GET["route"] === "roleUser" &&
     $_GET["action"] === "assign"
@@ -64,6 +64,19 @@ if(
         $roleAssingController->ctrRoleAssign();
         exit;
 
+}
+
+
+// Actualizar usuarios
+if (
+    $_SERVER["REQUEST_METHOD"] === "POST" &&
+    isset($_GET["route"], $_GET["action"]) &&
+    $_GET["route"] === "users" &&
+    $_GET["action"] === "update"
+    ){
+    $userController = new UserController();
+    $userController->ctrUserUpdate();
+    exit;
 }
 
 

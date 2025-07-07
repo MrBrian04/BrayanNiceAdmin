@@ -73,8 +73,23 @@ if (session_status() !== PHP_SESSION_ACTIVE){
   <script src="app/vistas/assets/vendor/php-email-form/validate.js"></script>
   
   <!-- Template Main JS File -->
-  <script src="app/vistas/assets/js/main.js"></script> 
+  <script src="app/vistas/assets/js/main.js"></script>
+  <?php if(isset($_SESSION["message"])): ?>
+  <script>
+    Swal.fire({
+    position: "top-end",
+    icon: '<?= $_SESSION["message_type"] ?>',
+    title: '<?= $_SESSION["message"] ?>',
+    showConfirmButton: false,
+    timer: 1500,
+    toast: true
+    });
+  </script>
 
+ <?php
+  unset($_SESSION["message"]);
+  unset($_SESSION["message_type"]);
+  endif; ?> 
 </body>
 
 </html>
