@@ -15,13 +15,10 @@ class LoginController{
             if(password_verify($password, $response["user_password"])){
 
             //if($response && $_POST["password"] === $response["user_password"]){
-
                 $idUser = $response["pk_id_user"];
-
                 $responseRole = LoginModel::mdlVerifyRole($idUser);
 
                 $fkIdRole = $responseRole["fk_id_role"];
-
                 $responseRoleName = LoginModel::mdlVerifyNameRole($fkIdRole);
 
                 session_start();
@@ -32,7 +29,12 @@ class LoginController{
                 $_SESSION["ROL_NAME"] = $responseRoleName["role_name"];
                 header("Location: index.php");
             }else{
-                echo '<div class="alert alert-danger text-center">Credenciales incorrectas</div>';
+                
+                $_SESSION["message"] = $response === "ok" ? "Usuario guardado correctamente" : "Error al guardar el usuario";
+                $_SESSION["message_type"] = $response === "ok" ? "success" : "error";
+
+                header("Location: index.php?route=users");
+                exit;
             }
 
 
@@ -40,6 +42,23 @@ class LoginController{
 
 
     }
+    public static function ctrLogout() {
+            session_start();
+            session_unset();
+            session_destroy();
+
+            // Mensaje para mostrar en plantilla
+            session_start(); // iniciar de nuevo para guardar el mensaje
+            $_SESSION["message"] = "Sesión cerrada correctamente";
+            $_SESSION["message_type"] = "success";
+
+            header("Location: index.php?route=login");
+            exit;
+        }
+
+
+
+
 
 
 }

@@ -40,18 +40,14 @@ $users = UserController::ctrGetAllUsers();
                       <button class="btn btn-sm btn-warning me-1" 
                       data-bs-toggle="modal"
                       data-bs-target="#editUserModal"
-                      data-id="<?php echo $user["pk_id_user"] ?>"
-                      data-name="<?php echo htmlspecialchars($user["user_name"]) ?>"
-                      data-email="<?php echo htmlspecialchars($user["user_email"]) ?>"
+                      data-id="<?= $user["pk_id_user"] ?>"
+                      data-name="<?= htmlspecialchars($user["user_name"]) ?>"
+                      data-email="<?= htmlspecialchars($user["user_email"]) ?>"
                       >
                       Editar
                     </button>
-                    <a
-                      href="index.php?route=users&action=delete&id=<?= $user["pk_id_user"] ?>"
-                      class="btn btn-danger btn-sm"
-                    >
-                      Eliminar
-                    </a>
+                    <a href="index.php?route=users&action=delete&id=<?= $user["pk_id_user"] ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Estas seguro de eliminar el registro?')">Eliminar</a>
+
                   </tr>
                     <?php endforeach; ?>
                     <?php endif; ?>

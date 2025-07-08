@@ -5,7 +5,32 @@ if (session_status() !== PHP_SESSION_ACTIVE){
 
 if(isset($_SESSION["authenticated"]) && $_SESSION["authenticated"] === "ok") return;
 require_once "app/controladores/login.controller.php";
+// Mostrar toast si hubo error de login
+if (!empty($_SESSION["login_error"])) {
+    echo '
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      Swal.fire({
+        toast: true,
+        position: "top-end",
+        icon: "error",
+        title: "' . $_SESSION["login_error"] . '",
+        showConfirmButton: false,
+        timer: 3000
+      });
+    </script>';
+    unset($_SESSION["login_error"]);
+}
+
+
 ?>
+
+
+
+
+
+
+
 
 <main>
   <div class="container">

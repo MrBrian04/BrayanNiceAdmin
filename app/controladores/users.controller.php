@@ -19,11 +19,11 @@ class UserController{
 
             $response = UserModel::mdlUserSave($data);
 
-            if ($response === "ok") {
-                echo "<div class='alert alert-success'>Rol registrado correctamente</div>";
-            } else {
-                echo "<div class='alert alert-danger'>Error al registrar Rol</div>";
-            }
+                $_SESSION["message"] = $response === "ok" ? "Usuario guardar correctamente" : "Error al guardar el usuario";
+                $_SESSION["message_type"] = $response === "ok" ? "success" : "error";
+
+                header("Location: index.php?route=users");
+                exit;
 
 
         }
@@ -56,15 +56,34 @@ class UserController{
 
             $response = UserModel::mdlUserUpdate($data);
 
-            if ($response === "ok") {
+
                 $_SESSION["message"] = $response === "ok" ? "Usuario actualizado correctamente" : "Error al actualizar el usuario";
                 $_SESSION["message_type"] = $response === "ok" ? "success" : "error";
 
                 header("Location: index.php?route=users");
                 exit;
-            }
+
         }
     }
+
+    public static function ctrUserDelete($id){
+        $response = UserModel::mdlUserDelete($id);//resibe el ok o el error de la consulta del modelo
+
+        session_start();
+        if ($response=== "ok"){
+            $_SESSION["message"] = "Usuario eliminado correctamente";
+            $_SESSION["message_type"] = "success";
+
+        }else{
+            $_SESSION["message"] = "Error al eliminar usuario";
+            $_SESSION["message_type"] = "error";
+        }
+        header("Location: index.php?route=users");
+        exit;
+
+    }
+
+
 
 
 

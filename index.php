@@ -79,6 +79,21 @@ if (
     exit;
 }
 
+// Eliminar usuarios
+if (
+    $_SERVER["REQUEST_METHOD"] === "GET" &&
+    isset($_GET["route"], $_GET["action"],$_GET["id"]) &&
+    $_GET["route"] === "users" &&
+    $_GET["action"] === "delete" 
+    ){
+    $userController = new UserController();
+    $userController->ctrUserDelete((int)$_GET["id"]);
+    exit;
+}
+
+
+
+
 
 $plantilla = new ControladorPlantilla();
 $plantilla->ctrPlantilla();

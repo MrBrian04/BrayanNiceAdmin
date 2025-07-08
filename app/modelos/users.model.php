@@ -51,4 +51,18 @@ class UserModel{
 
         return $stmt->execute() ? "ok" : "error";
     }
+    public static function mdlUserDelete($id){
+
+        $db = Conexion::conectar();
+        $sql = "DELETE FROM users WHERE pk_id_user = :id"; // el :id es una fachada para seguridad
+
+        $stmt = $db->prepare($sql);//preparamos la consulta
+        $stmt->bindParam(":id", $id, PDO::PARAM_STR);//asignamos la fachada a la variable real
+        return $stmt->execute() ? "ok" : "error";//la base de datos no retorna un ok o un error y esto se envia al controlador a su variable responde en el controlador
+ 
+
+
+
+
+    }
 }
