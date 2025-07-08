@@ -19,7 +19,7 @@ class UserController{
 
             $response = UserModel::mdlUserSave($data);
 
-                $_SESSION["message"] = $response === "ok" ? "Usuario guardar correctamente" : "Error al guardar el usuario";
+                $_SESSION["message"] = $response === "ok" ? "Usuario guardado correctamente" : "Error al guardar el usuario";
                 $_SESSION["message_type"] = $response === "ok" ? "success" : "error";
 
                 header("Location: index.php?route=users");

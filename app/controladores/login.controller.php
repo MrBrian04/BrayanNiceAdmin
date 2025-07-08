@@ -30,7 +30,7 @@ class LoginController{
                 header("Location: index.php");
             }else{
                 
-                $_SESSION["message"] = $response === "ok" ? "Usuario guardado correctamente" : "Error al guardar el usuario";
+                $_SESSION["message"] = $response === "ok" ? "Usuario guardado correctamente" : "Credenciales incorrectas";
                 $_SESSION["message_type"] = $response === "ok" ? "success" : "error";
 
                 header("Location: index.php?route=users");
