@@ -24,7 +24,7 @@ $roles = RoleController::ctrGetAllRoles();
                   </th>
                   <th>Descripcion</th>
                   <th data-type="date" data-format="YYYY/DD/MM">Fecha de Registro</th>
-                  
+                  <th>Acciones</th> <!-- Nueva columna -->
                 </tr>
               </thead>
               <tbody>
@@ -34,6 +34,18 @@ $roles = RoleController::ctrGetAllRoles();
                   <td><?= htmlspecialchars($rol["role_name"],ENT_QUOTES,'UTF-8')?></td>
                   <td><?= htmlspecialchars($rol["role_description"],ENT_QUOTES,'UTF-8')?></td>
                   <td><?= htmlspecialchars($rol["role_datatime"],ENT_QUOTES,'UTF-8')?></td>
+                  <td class="text-center">
+                    <button class="btn btn-sm btn-warning me-1"
+                      data-bs-toggle="modal"
+                      data-bs-target="#editRoleModal"
+                      data-id="<?= $rol["pk_id_role"] ?>"
+                      data-name="<?= htmlspecialchars($rol["role_name"]) ?>"
+                      data-description="<?= htmlspecialchars($rol["role_description"]) ?>"
+                    >
+                      Editar
+                    </button>
+                    <a href="index.php?route=roles&action=delete&id=<?= $rol["pk_id_role"] ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Estas seguro de eliminar el rol?')">Eliminar</a>
+                  </td>
                 </tr>
                   <?php endforeach; ?>
                   <?php endif; ?>
@@ -80,3 +92,50 @@ $roles = RoleController::ctrGetAllRoles();
     </div>
   </div>
 </div><!-- End Basic Modal-->
+
+<!-- Modal Editar Rol -->
+<div class="modal fade" id="editRoleModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="POST" action="index.php?route=roles&action=update">
+        <div class="modal-header">
+          <h5 class="modal-title">Editar Rol</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" name="roleId" id="editRoleId">
+          <div class="mb-3">
+            <label for="editRoleName" class="form-label">Nombre Rol</label>
+            <input type="text" class="form-control" id="editRoleName" name="roleName" required>
+          </div>
+          <div class="mb-3">
+            <label for="editRoleDescription" class="form-label">Descripción</label>
+            <input type="text" class="form-control" id="editRoleDescription" name="roleDescription" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var editRoleModal = document.getElementById('editRoleModal');
+  if (editRoleModal) {
+    editRoleModal.addEventListener('show.bs.modal', function (event) {
+      var button = event.relatedTarget;
+      var roleId = button.getAttribute('data-id');
+      var roleName = button.getAttribute('data-name');
+      var roleDescription = button.getAttribute('data-description');
+
+      document.getElementById('editRoleId').value = roleId;
+      document.getElementById('editRoleName').value = roleName;
+      document.getElementById('editRoleDescription').value = roleDescription;
+    });
+  }
+});
+</script>

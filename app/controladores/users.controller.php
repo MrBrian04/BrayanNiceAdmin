@@ -37,20 +37,38 @@ class UserController{
         if($_SERVER["REQUEST_METHOD"] === "POST"){
             $userId = $_POST["userId"];
             $userName = trim($_POST["userName"]);
-            $userEmail = filter_var($_POST["userEmail"],FILTER_VALIDATE_EMAIL);
+            $userEmail = trim($_POST["userEmail"]);
             $userPassword = $_POST["userPassword"];
 
+            // Validaciones
+            if (empty($userName)) {
+                $_SESSION["message"] = "El nombre es obligatorio.";
+                $_SESSION["message_type"] = "error";
+                header("Location: index.php?route=users");
+                exit;
+            }
+            if (!filter_var($userEmail, FILTER_VALIDATE_EMAIL)) {
+                $_SESSION["message"] = "El correo no es válido.";
+                $_SESSION["message_type"] = "error";
+                header("Location: index.php?route=users");
+                exit;
+            }
 
             $data = [
                 "user_id" => $userId,
                 "user_name" => $userName,
-                "user_email" =>$userEmail                
+                "user_email" => $userEmail
             ];
 
-            //Si ingreso una nueva contraseña, la encriptamos
-
-            if(!empty($userPassword)){
-                $passwordHash =password_hash($userPassword, PASSWORD_DEFAULT);
+            // Si ingreso una nueva contraseña, la encriptamos y validamos longitud
+            if (!empty($userPassword)) {
+                if (strlen($userPassword) < 6) {
+                    $_SESSION["message"] = "La contraseña debe tener al menos 6 caracteres.";
+                    $_SESSION["message_type"] = "error";
+                    header("Location: index.php?route=users");
+                    exit;
+                }
+                $passwordHash = password_hash($userPassword, PASSWORD_DEFAULT);
                 $data["user_password"] = $passwordHash;
             }
 

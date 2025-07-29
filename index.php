@@ -66,7 +66,6 @@ if(
 
 }
 
-
 // Actualizar usuarios
 if (
     $_SERVER["REQUEST_METHOD"] === "POST" &&
@@ -91,9 +90,29 @@ if (
     exit;
 }
 
+// Actualizar roles
+if (
+    $_SERVER["REQUEST_METHOD"] === "POST" &&
+    isset($_GET["route"], $_GET["action"]) &&
+    $_GET["route"] === "roles" &&
+    $_GET["action"] === "update"
+){
+    $roleController = new RoleController();
+    $roleController->ctrRoleUpdate();
+    exit;
+}
 
-
-
+// Eliminar roles
+if (
+    $_SERVER["REQUEST_METHOD"] === "GET" &&
+    isset($_GET["route"], $_GET["action"], $_GET["id"]) &&
+    $_GET["route"] === "roles" &&
+    $_GET["action"] === "delete"
+){
+    $roleController = new RoleController();
+    $roleController->ctrRoleDelete();
+    exit;
+}
 
 $plantilla = new ControladorPlantilla();
 $plantilla->ctrPlantilla();
